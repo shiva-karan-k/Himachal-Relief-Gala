@@ -1,0 +1,4 @@
+UPI ID: getepay.hpscbank228371@icici
+Bank: Himachal Pradesh State Cooperative Bank
+This file is a placeholder for the QR code image.
+To add the actual QR code image, save it as 'upi-qr.png' in the public folder.

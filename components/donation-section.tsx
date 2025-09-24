@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Heart, Shield, ArrowRight } from 'lucide-react';
+import { Heart, Shield, ArrowRight, Smartphone, QrCode } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
 
 export default function DonationSection() {
@@ -11,7 +11,26 @@ export default function DonationSection() {
   const handleDonate = () => {
     const amount = selectedAmount || parseInt(customAmount);
     if (amount && amount >= 1) {
-      window.open(siteConfig.razorpay.donationLink, '_blank');
+      const upiId = 'getepay.hpscbank228371@icici';
+      const name = 'Himachal Relief Fund';
+      const note = `Donation for Himachal Relief - Amount: ₹${amount}`;
+      
+      // PhonePe deep link format
+      const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&tn=${encodeURIComponent(note)}`;
+      
+      // Fallback to generic UPI link
+      const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&tn=${encodeURIComponent(note)}`;
+      
+      // Try PhonePe first, then fallback
+      try {
+        window.location.href = phonePeUrl;
+        // Fallback after a short delay
+        setTimeout(() => {
+          window.location.href = genericUpiUrl;
+        }, 1000);
+      } catch (error) {
+        window.location.href = genericUpiUrl;
+      }
     }
   };
 
@@ -83,18 +102,18 @@ export default function DonationSection() {
                   />
                 </div>
 
-                {/* Donate Button */}
+                {/* Payment Button */}
                 <button
                   onClick={handleDonate}
                   disabled={!isValidAmount}
                   className={`w-full text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center ${
                     isValidAmount
-                      ? 'btn-primary glow-saffron hover:scale-105'
+                      ? 'bg-gradient-to-r from-[#6A0EDD] to-[#9747FF] hover:from-[#7B1EEE] hover:to-[#A858FF] text-white glow-blue hover:scale-105'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
-                  <Heart className="w-5 h-5 mr-2" />
-                  Donate {selectedAmount ? `₹${selectedAmount}` : customAmount ? `₹${customAmount}` : 'Now'}
+                  <Smartphone className="w-5 h-5 mr-2" />
+                  Donate via PhonePe/UPI {selectedAmount ? `₹${selectedAmount}` : customAmount ? `₹${customAmount}` : ''}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </button>
               </div>
@@ -180,6 +199,29 @@ export default function DonationSection() {
                 <div className="text-xs text-white/60 text-center">
                   Both kits support families for 2-3 weeks
                 </div>
+              </div>
+
+              {/* UPI QR Code */}
+              <div className="glass rounded-xl p-6 text-center">
+                <div className="flex items-center justify-center mb-3">
+                  <QrCode className="w-5 h-5 text-[#6A0EDD] mr-2" />
+                  <h4 className="font-semibold text-white">
+                    Scan & Pay
+                  </h4>
+                </div>
+                <div className="w-32 h-32 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center">
+                  <div className="text-xs text-gray-600 text-center p-2">
+                    QR Code
+                    <br />
+                    (Add upi-qr.png to public folder)
+                  </div>
+                </div>
+                <p className="text-xs text-white/70 mb-2">
+                  UPI ID: getepay.hpscbank228371@icici
+                </p>
+                <p className="text-xs text-white/60">
+                  HP State Cooperative Bank
+                </p>
               </div>
 
               {/* Tax Benefits */}

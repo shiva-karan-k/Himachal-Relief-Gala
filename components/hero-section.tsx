@@ -34,7 +34,28 @@ export default function HeroSection() {
   const progressPercentage = (counters.raised / siteConfig.goal) * 100;
 
   const handleDonate = () => {
-    window.open(siteConfig.razorpay.donationLink, '_blank');
+    // Default amount for hero section - can be changed
+    const defaultAmount = 2000;
+    const upiId = 'getepay.hpscbank228371@icici';
+    const name = 'Himachal Relief Fund';
+    const note = `Donation for Himachal Relief - Amount: ₹${defaultAmount}`;
+    
+    // PhonePe deep link format
+    const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${defaultAmount}&tn=${encodeURIComponent(note)}`;
+    
+    // Fallback to generic UPI link
+    const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${defaultAmount}&tn=${encodeURIComponent(note)}`;
+    
+    // Try PhonePe first, then fallback
+    try {
+      window.location.href = phonePeUrl;
+      // Fallback after a short delay
+      setTimeout(() => {
+        window.location.href = genericUpiUrl;
+      }, 1000);
+    } catch (error) {
+      window.location.href = genericUpiUrl;
+    }
   };
 
   const scrollToTickets = () => {
