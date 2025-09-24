@@ -36,7 +36,7 @@ export default function HeroSection() {
   const handleDonate = () => {
     console.log('Hero donate button clicked!');
     const defaultAmount = 2000;
-    const upiId = 'getepay.hpscbank228371';
+    const upiId = 'getepay.hpscbank228371@icici';
     const name = 'Himachal Relief Fund';
     const note = `Donation for Himachal Relief - Amount: ₹${defaultAmount}`;
     

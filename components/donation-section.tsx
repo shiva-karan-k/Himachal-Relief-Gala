@@ -14,7 +14,7 @@ export default function DonationSection() {
 
   const generateQRCode = async (amount: number) => {
     try {
-      const upiId = 'getepay.hpscbank228371';
+      const upiId = 'getepay.hpscbank228371@icici';
       const name = 'Himachal Relief Fund';
       const note = `Donation for Himachal Relief - Amount: ₹${amount}`;
       
@@ -44,7 +44,7 @@ export default function DonationSection() {
     console.log('Amount:', amount, 'Selected:', selectedAmount, 'Custom:', customAmount);
     
     if (amount && amount >= 1) {
-      const upiId = 'getepay.hpscbank228371';
+      const upiId = 'getepay.hpscbank228371@icici';
       const name = 'Himachal Relief Fund';
       const note = `Donation for Himachal Relief - Amount: ₹${amount}`;
       
@@ -269,7 +269,7 @@ export default function DonationSection() {
                   />
                 </div>
                 <p className="text-xs text-white/70 mb-2">
-                  UPI ID: getepay.hpscbank228371
+                  UPI ID: getepay.hpscbank228371@icici
                 </p>
                 <p className="text-xs text-white/60">
                   HP State Cooperative Bank
@@ -329,10 +329,10 @@ export default function DonationSection() {
                   <div className="flex justify-between items-center">
                     <span className="text-white/70 text-sm">UPI ID:</span>
                     <div className="flex items-center space-x-2">
-                      <span className="text-white text-sm font-mono">getepay.hpscbank228371</span>
+                      <span className="text-white text-sm font-mono">getepay.hpscbank228371@icici</span>
                       <button 
                         onClick={() => {
-                          navigator.clipboard.writeText('getepay.hpscbank228371');
+                          navigator.clipboard.writeText('getepay.hpscbank228371@icici');
                           alert('UPI ID copied!');
                         }}
                         className="text-[#6DE1FF] hover:text-[#00E0C6] focus-ring rounded p-1"
@@ -374,7 +374,7 @@ export default function DonationSection() {
                 </button>
                 <button 
                   onClick={() => {
-                    const upiId = 'getepay.hpscbank228371';
+                    const upiId = 'getepay.hpscbank228371@icici';
                     const name = 'Himachal Relief Fund';
                     const note = `Donation for Himachal Relief - Amount: ₹${qrAmount}`;
                     
