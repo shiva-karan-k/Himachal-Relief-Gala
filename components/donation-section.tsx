@@ -1,17 +1,50 @@
 "use client";
 
-import { useState } from 'react';
-import { Heart, Shield, ArrowRight, Smartphone, QrCode } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Heart, Shield, ArrowRight, Smartphone, QrCode, X, Copy } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
+import QRCode from 'qrcode';
 
 export default function DonationSection() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState<string>('');
+  const [showQRModal, setShowQRModal] = useState(false);
+  const [qrAmount, setQrAmount] = useState<number>(0);
+  const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>('');
+
+  const generateQRCode = async (amount: number) => {
+    try {
+      const upiId = 'getepay.hpscbank228371';
+      const name = 'Himachal Relief Fund';
+      const note = `Donation for Himachal Relief - Amount: ₹${amount}`;
+      
+      // UPI URL format
+      const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&tn=${encodeURIComponent(note)}`;
+      
+      // Generate QR code
+      const qrDataUrl = await QRCode.toDataURL(upiUrl, {
+        width: 200,
+        margin: 2,
+        color: {
+          dark: '#000000',
+          light: '#FFFFFF'
+        }
+      });
+      
+      setQrCodeDataUrl(qrDataUrl);
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+      setQrCodeDataUrl('');
+    }
+  };
 
   const handleDonate = () => {
+    console.log('Donate button clicked!');
     const amount = selectedAmount || parseInt(customAmount);
+    console.log('Amount:', amount, 'Selected:', selectedAmount, 'Custom:', customAmount);
+    
     if (amount && amount >= 1) {
-      const upiId = 'getepay.hpscbank228371@icici';
+      const upiId = 'getepay.hpscbank228371';
       const name = 'Himachal Relief Fund';
       const note = `Donation for Himachal Relief - Amount: ₹${amount}`;
       
@@ -21,16 +54,35 @@ export default function DonationSection() {
       // Fallback to generic UPI link
       const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&tn=${encodeURIComponent(note)}`;
       
-      // Try PhonePe first, then fallback
+      console.log('PhonePe URL:', phonePeUrl);
+      console.log('Generic UPI URL:', genericUpiUrl);
+      
+      // Try opening UPI link directly
       try {
-        window.location.href = phonePeUrl;
-        // Fallback after a short delay
-        setTimeout(() => {
-          window.location.href = genericUpiUrl;
-        }, 1000);
-      } catch (error) {
+        // For desktop, show QR code modal
+        if (!navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) {
+          setQrAmount(amount);
+          generateQRCode(amount);
+          setShowQRModal(true);
+          return;
+        }
+        
+        // For mobile, try UPI deep link
         window.location.href = genericUpiUrl;
+        
+        // Fallback to PhonePe specifically after delay
+        setTimeout(() => {
+          window.location.href = phonePeUrl;
+        }, 1000);
+        
+      } catch (error) {
+        console.error('UPI link error:', error);
+        setQrAmount(amount);
+        generateQRCode(amount);
+        setShowQRModal(true);
       }
+    } else {
+      alert('Please select or enter a valid amount first!');
     }
   };
 
@@ -209,15 +261,15 @@ export default function DonationSection() {
                     Scan & Pay
                   </h4>
                 </div>
-                <div className="w-32 h-32 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center">
-                  <div className="text-xs text-gray-600 text-center p-2">
-                    QR Code
-                    <br />
-                    (Add upi-qr.png to public folder)
-                  </div>
+                <div className="w-32 h-32 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center p-1">
+                  <img 
+                    src="/upi-qr-code.png" 
+                    alt="HP State Cooperative Bank UPI QR Code" 
+                    className="w-full h-full object-contain rounded"
+                  />
                 </div>
                 <p className="text-xs text-white/70 mb-2">
-                  UPI ID: getepay.hpscbank228371@icici
+                  UPI ID: getepay.hpscbank228371
                 </p>
                 <p className="text-xs text-white/60">
                   HP State Cooperative Bank
@@ -237,6 +289,137 @@ export default function DonationSection() {
           </div>
         </div>
       </div>
+
+      {/* QR Code Modal */}
+      {showQRModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="glass rounded-2xl p-8 max-w-md w-full relative">
+            {/* Close Button */}
+            <button 
+              onClick={() => setShowQRModal(false)}
+              className="absolute top-4 right-4 text-white/70 hover:text-white focus-ring rounded p-1"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="text-center">
+              <h3 className="font-saira text-xl font-semibold mb-4 text-white">
+                Scan to Pay ₹{qrAmount}
+              </h3>
+
+              {/* QR Code */}
+              <div className="w-48 h-48 mx-auto mb-4 bg-white rounded-lg flex items-center justify-center p-2">
+                <img 
+                  src="/upi-qr-code.png" 
+                  alt="Himachal Pradesh State Cooperative Bank UPI QR Code" 
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    // Fallback to generated QR if image not found
+                    if (qrCodeDataUrl) {
+                      e.currentTarget.src = qrCodeDataUrl;
+                    }
+                  }}
+                />
+              </div>
+
+              {/* UPI Details */}
+              <div className="space-y-3 mb-6">
+                <div className="glass-dark rounded-lg p-3 text-left">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/70 text-sm">UPI ID:</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-white text-sm font-mono">getepay.hpscbank228371</span>
+                      <button 
+                        onClick={() => {
+                          navigator.clipboard.writeText('getepay.hpscbank228371');
+                          alert('UPI ID copied!');
+                        }}
+                        className="text-[#6DE1FF] hover:text-[#00E0C6] focus-ring rounded p-1"
+                      >
+                        <Copy className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="glass-dark rounded-lg p-3 text-left">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/70 text-sm">Amount:</span>
+                    <span className="text-[#FF9A1F] font-semibold">₹{qrAmount}</span>
+                  </div>
+                </div>
+
+                <div className="glass-dark rounded-lg p-3 text-left">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/70 text-sm">Recipient:</span>
+                    <span className="text-white text-sm">Himachal Relief Fund</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Instructions */}
+              <div className="text-sm text-white/70 mb-4">
+                <p className="mb-2">📱 Open any UPI app and scan the QR code</p>
+                <p>Or copy the UPI ID and pay manually</p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <button 
+                  onClick={() => setShowQRModal(false)}
+                  className="flex-1 btn-secondary"
+                >
+                  Close
+                </button>
+                <button 
+                  onClick={() => {
+                    const upiId = 'getepay.hpscbank228371';
+                    const name = 'Himachal Relief Fund';
+                    const note = `Donation for Himachal Relief - Amount: ₹${qrAmount}`;
+                    
+                    // Try multiple UPI link formats
+                    const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${qrAmount}&tn=${encodeURIComponent(note)}`;
+                    const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${qrAmount}&tn=${encodeURIComponent(note)}`;
+                    const paytmUrl = `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${qrAmount}&tn=${encodeURIComponent(note)}`;
+                    
+                    console.log('Trying to open UPI app with:', genericUpiUrl);
+                    
+                    // Try to open UPI apps in sequence
+                    try {
+                      // First try generic UPI
+                      window.location.href = genericUpiUrl;
+                      
+                      // Fallback attempts after delays
+                      setTimeout(() => {
+                        console.log('Trying PhonePe...');
+                        window.open(phonePeUrl, '_blank');
+                      }, 500);
+                      
+                      setTimeout(() => {
+                        console.log('Trying Paytm...');
+                        window.open(paytmUrl, '_blank');
+                      }, 1000);
+                      
+                      // If nothing works, show instructions
+                      setTimeout(() => {
+                        alert(`If no UPI app opened, manually pay using:\n\nUPI ID: ${upiId}\nAmount: ₹${qrAmount}\nNote: ${note}`);
+                      }, 2000);
+                      
+                    } catch (error) {
+                      console.error('Error opening UPI app:', error);
+                      alert(`Please pay manually using:\n\nUPI ID: ${upiId}\nAmount: ₹${qrAmount}\nNote: ${note}`);
+                    }
+                  }}
+                  className="flex-1 bg-gradient-to-r from-[#6A0EDD] to-[#9747FF] hover:from-[#7B1EEE] hover:to-[#A858FF] text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 focus-ring"
+                >
+                  Open UPI App
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -34,9 +34,9 @@ export default function HeroSection() {
   const progressPercentage = (counters.raised / siteConfig.goal) * 100;
 
   const handleDonate = () => {
-    // Default amount for hero section - can be changed
+    console.log('Hero donate button clicked!');
     const defaultAmount = 2000;
-    const upiId = 'getepay.hpscbank228371@icici';
+    const upiId = 'getepay.hpscbank228371';
     const name = 'Himachal Relief Fund';
     const note = `Donation for Himachal Relief - Amount: ₹${defaultAmount}`;
     
@@ -46,15 +46,27 @@ export default function HeroSection() {
     // Fallback to generic UPI link
     const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${defaultAmount}&tn=${encodeURIComponent(note)}`;
     
-    // Try PhonePe first, then fallback
+    console.log('Hero PhonePe URL:', phonePeUrl);
+    
+    // Try opening UPI link
     try {
-      window.location.href = phonePeUrl;
-      // Fallback after a short delay
-      setTimeout(() => {
-        window.location.href = genericUpiUrl;
-      }, 1000);
-    } catch (error) {
+      // For desktop, scroll to donation section where they can see QR code
+      if (!navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) {
+        document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      
+      // For mobile, try UPI deep link
       window.location.href = genericUpiUrl;
+      
+      // Fallback to PhonePe specifically after delay
+      setTimeout(() => {
+        window.location.href = phonePeUrl;
+      }, 1000);
+      
+    } catch (error) {
+      console.error('Hero UPI link error:', error);
+      alert(`UPI ID: ${upiId}\nAmount: ₹${defaultAmount}\nPlease pay manually through any UPI app.`);
     }
   };
 
