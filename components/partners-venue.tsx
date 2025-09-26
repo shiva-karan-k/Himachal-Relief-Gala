@@ -15,16 +15,16 @@ const partners = [
     website: "https://studio.sted.space"
   },
   { 
-    name: "Local Relief Foundation", 
-    description: "Ground-level distribution network"
-  },
-  { 
     name: "Himachal Tourism Board", 
-    description: "Event coordination and logistics"
+    description: "Event coordination and tourism support"
   },
   { 
     name: "Kullu District Administration", 
-    description: "Official support and permissions"
+    description: "Official partnership & fair distribution"
+  },
+  { 
+    name: "Local Relief Foundation", 
+    description: "Kullu-based volunteers & ground support"
   }
 ];
 
@@ -210,6 +210,59 @@ END:VCALENDAR`;
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Safety Measures */}
+        <div className="mt-16">
+          <h3 className="font-saira text-2xl font-bold text-white mb-8 text-center">
+            🛡️ Safety & Security Measures
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="glass rounded-xl p-6 text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#6DE1FF]/20 to-[#00E0C6]/20 rounded-full flex items-center justify-center border border-[#6DE1FF]/30">
+                <span className="text-2xl">🏥</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Medical Support</h4>
+              <p className="text-white/70 text-sm">On-site medical staff from Kullu hospital with emergency response team</p>
+            </div>
+            
+            <div className="glass rounded-xl p-6 text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#FF9A1F]/20 to-[#B31E2B]/20 rounded-full flex items-center justify-center border border-[#FF9A1F]/30">
+                <span className="text-2xl">🧼</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Health Protocols</h4>
+              <p className="text-white/70 text-sm">Masks, sanitizer, and basic first aid available throughout the venue</p>
+            </div>
+            
+            <div className="glass rounded-xl p-6 text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#00E0C6]/20 to-[#6DE1FF]/20 rounded-full flex items-center justify-center border border-[#00E0C6]/30">
+                <span className="text-2xl">👮</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Security</h4>
+              <p className="text-white/70 text-sm">Local police support for comprehensive security and crowd management</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Media & Communication */}
+        <div className="mt-12 glass rounded-2xl p-8 text-center">
+          <h3 className="font-saira text-xl font-bold text-white mb-4">
+            📺 Media & Communication
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6 text-sm">
+            <div>
+              <div className="text-[#6DE1FF] font-semibold mb-2">📰 Press Coverage</div>
+              <div className="text-white/70">Local Himachali newspapers and radio stations invited for coverage</div>
+            </div>
+            <div>
+              <div className="text-[#FF9A1F] font-semibold mb-2">📸 Transparency</div>
+              <div className="text-white/70">Daily posts with images from affected villages and distribution updates</div>
+            </div>
+            <div>
+              <div className="text-[#00E0C6] font-semibold mb-2">🏆 Recognition</div>
+              <div className="text-white/70">Donor and guest names acknowledged during gala night (optional)</div>
             </div>
           </div>
         </div>

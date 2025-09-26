@@ -45,9 +45,13 @@
     box-shadow: 0 0 20px rgba(255, 154, 31, 0.3);
   }
   
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(109, 225, 255, 0.3);
-  }
+.glow-blue {
+  box-shadow: 0 0 20px rgba(109, 225, 255, 0.3);
+}
+
+.glow-red {
+  box-shadow: 0 0 20px rgba(179, 30, 43, 0.4);
+}
   
   .text-glow {
     text-shadow: 0 0 10px currentColor;

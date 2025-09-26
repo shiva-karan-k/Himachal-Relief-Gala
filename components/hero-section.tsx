@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { ArrowRight, Shield, Heart } from 'lucide-react';
+import { ArrowRight, Shield, Heart, Droplets } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
 
 export default function HeroSection() {
@@ -72,6 +72,10 @@ export default function HeroSection() {
 
   const scrollToTickets = () => {
     document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToBloodDonate = () => {
+    document.getElementById('blood-donate')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -158,7 +162,7 @@ export default function HeroSection() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 w-full">
+        <div className="flex flex-col lg:flex-row gap-4 justify-center items-center mb-8 w-full">
           <button 
             onClick={handleDonate}
             className="btn-primary text-lg px-8 py-4 glow-saffron hover:scale-105 transition-all duration-300"
@@ -171,6 +175,14 @@ export default function HeroSection() {
             className="btn-secondary text-lg px-8 py-4"
           >
             Buy Gala Tickets
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </button>
+          <button 
+            onClick={scrollToBloodDonate}
+            className="bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 glow-red flex items-center"
+          >
+            <Droplets className="w-5 h-5 mr-2" />
+            Donate Blood
             <ArrowRight className="w-5 h-5 ml-2" />
           </button>
         </div>

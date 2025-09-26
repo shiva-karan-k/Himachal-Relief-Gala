@@ -4,10 +4,9 @@ export const siteConfig = {
   donors: 0,
   ticketsSold: 0,
   tickets: [
-    {"tier": "General", "price": 999, "link": "RAZORPAY_TICKET_GENERAL_LINK"},
-    {"tier": "VIP", "price": 2499, "link": "RAZORPAY_TICKET_VIP_LINK"},
-    {"tier": "Patron Table (4)", "price": 7999, "link": "RAZORPAY_TICKET_PATRON_LINK"},
-    {"tier": "Corporate Table (10)", "price": 25000, "link": "RAZORPAY_TICKET_CORP_LINK"}
+    {"tier": "General", "price": 200, "link": "RAZORPAY_TICKET_GENERAL_LINK", "description": "Entry to gala", "includes": ["Entry to gala", "Cultural performances", "Himachali cuisine dinner"]},
+    {"tier": "Patron Table", "price": 2000, "link": "RAZORPAY_TICKET_PATRON_LINK", "description": "Reserved table for 10 guests", "includes": ["Reserved table for 10", "Recognition on stage", "Brochure acknowledgment", "Premium seating"]},
+    {"tier": "Corporate Table", "price": 5000, "link": "RAZORPAY_TICKET_CORP_LINK", "description": "Branding space at venue", "includes": ["Table for 10 guests", "Branding space at venue", "On-stage acknowledgment", "Corporate logo display"]}
   ],
   donationPresets: [2000, 2500, 5000, 10000],
   razorpay: {

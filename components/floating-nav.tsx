@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Heart, Ticket } from 'lucide-react';
+import { Menu, X, Heart, Ticket, Droplets } from 'lucide-react';
 
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,6 +145,16 @@ export default function FloatingNav() {
         >
           <Ticket className="w-5 h-5 md:mr-2" />
           <span className="hidden md:inline">Get a seat at Gala Night</span>
+        </button>
+
+        {/* Blood Donation Button */}
+        <button 
+          onClick={() => scrollToSection('blood-donate')}
+          className="bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-red"
+          aria-label="Donate Blood"
+        >
+          <Droplets className="w-5 h-5 md:mr-2" />
+          <span className="hidden md:inline">Donate Blood</span>
         </button>
       </div>
     </>

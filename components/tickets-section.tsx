@@ -109,13 +109,102 @@ export default function TicketsSection() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="font-saira text-3xl md:text-4xl font-bold mb-4 text-white">
-            Join the Gala Night Dinner
+            🎭 Gala Event Highlights – Kullu Dussehra Special
           </h2>
-          <p className="text-lg text-white/70 mb-2">
-            Culture, community, gratitude.
+          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-6">
+            Experience the world-famous <strong className="text-[#FF9A1F]">Kullu Dussehra Festival</strong> - a UNESCO-recognised cultural celebration.
+            Join us for <strong className="text-[#6DE1FF]">4 days of cultural immersion</strong> and community spirit!
           </p>
           <div className="glass-dark rounded-lg px-4 py-2 inline-block">
-            <span className="text-[#FF9A1F] text-sm font-semibold">Limited seats</span>
+            <span className="text-[#FF9A1F] text-sm font-semibold">🎪 Limited seats • October 4-7, 2025</span>
+          </div>
+        </div>
+
+        {/* Event Schedule */}
+        <div className="glass rounded-2xl p-8 mb-12">
+          <h3 className="font-saira text-2xl font-bold text-white mb-8 text-center">
+            📅 4-Day Event Schedule
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Day 1 */}
+            <div className="glass-dark rounded-xl p-6">
+              <div className="text-[#6DE1FF] font-bold text-lg mb-2">4th October</div>
+              <div className="text-white font-semibold mb-3">Opening & Heroes</div>
+              <div className="space-y-2 text-sm text-white/70">
+                <div>🌅 Morning: Sports</div>
+                <div>🌟 Evening: Cultural Night</div>
+                <div>🕯️ Disaster Heroes Appreciation</div>
+                <div>🕯️ Candlelight Unity Ceremony</div>
+              </div>
+            </div>
+
+            {/* Day 2 */}
+            <div className="glass-dark rounded-xl p-6">
+              <div className="text-[#00E0C6] font-bold text-lg mb-2">5th October</div>
+              <div className="text-white font-semibold mb-3">Community Celebration</div>
+              <div className="space-y-2 text-sm text-white/70">
+                <div>🎵 Local singers performances</div>
+                <div>💃 Natti folk dance</div>
+                <div>🥁 Traditional music</div>
+                <div>🤝 Community spirit celebration</div>
+              </div>
+            </div>
+
+            {/* Day 3 */}
+            <div className="glass-dark rounded-xl p-6">
+              <div className="text-[#FF9A1F] font-bold text-lg mb-2">6th October</div>
+              <div className="text-white font-semibold mb-3">Gratitude & Relief</div>
+              <div className="space-y-2 text-sm text-white/70">
+                <div>🙏 Sponsor Appreciation</div>
+                <div>🩸 Blood Donation Promotion</div>
+                <div>🏮 Sky lantern release</div>
+                <div>💫 Hope & renewal ceremony</div>
+              </div>
+            </div>
+
+            {/* Day 4 */}
+            <div className="glass-dark rounded-xl p-6">
+              <div className="text-[#B31E2B] font-bold text-lg mb-2">7th October</div>
+              <div className="text-white font-semibold mb-3">Empowerment & Finale</div>
+              <div className="space-y-2 text-sm text-white/70">
+                <div>👩‍💼 Women's Empowerment (NIRBHAYA)</div>
+                <div>🎧 DJ Night celebration</div>
+                <div>🩸 Blood Donation Camp</div>
+                <div>✨ Grand finale</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Cultural Highlights */}
+        <div className="glass rounded-2xl p-8 mb-12">
+          <h3 className="font-saira text-2xl font-bold text-white mb-6 text-center">
+            🎭 What You'll Experience
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#6DE1FF] to-[#00E0C6] rounded-full flex items-center justify-center">
+                <span className="text-2xl">💃</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Himachali Folk Dances</h4>
+              <p className="text-white/70 text-sm">Authentic Nati and Kullu Dhol performances</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#FF9A1F] to-[#B31E2B] rounded-full flex items-center justify-center">
+                <span className="text-2xl">🎨</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Local Artisans</h4>
+              <p className="text-white/70 text-sm">Handicrafts from Kullu & Manali</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#00E0C6] to-[#6DE1FF] rounded-full flex items-center justify-center">
+                <span className="text-2xl">🍽️</span>
+              </div>
+              <h4 className="font-semibold text-white mb-2">Himachali Cuisine</h4>
+              <p className="text-white/70 text-sm">Traditional blended with gala-style dinner</p>
+            </div>
           </div>
         </div>
 
