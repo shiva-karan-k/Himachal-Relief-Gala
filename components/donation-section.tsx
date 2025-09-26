@@ -128,7 +128,7 @@ export default function DonationSection() {
                 </h3>
 
                 {/* Preset Amounts */}
-                <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3 mb-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
                   {siteConfig.donationPresets.map((amount) => (
                     <button
                       key={amount}
@@ -136,19 +136,19 @@ export default function DonationSection() {
                         setSelectedAmount(amount);
                         setCustomAmount('');
                       }}
-                      className={`p-4 rounded-xl transition-all duration-300 border-2 focus-ring ${
+                      className={`p-3 rounded-xl transition-all duration-300 border-2 focus-ring min-h-[80px] flex flex-col justify-center items-center text-center ${
                         selectedAmount === amount
                           ? 'border-[#6DE1FF] bg-[#6DE1FF]/10 text-[#6DE1FF]'
                           : 'border-white/20 glass-dark hover:border-[#6DE1FF]/50'
                       }`}
                     >
-                      <div className="text-lg font-bold">₹{amount}</div>
-                      <div className="text-xs text-white/70 mt-1">
+                      <div className="text-base font-bold">₹{amount}</div>
+                      <div className="text-xs text-white/70 mt-1 leading-tight">
                         {amount < 2000 ? 'Support' :
-                         amount === 2000 ? '1 Kit (Standard)' : 
-                         amount === 2500 ? '1 Kit (Bigger Family)' :
-                         amount === 5000 ? '2 Kits Fund' : 
-                         amount === 10000 ? '4 Kits Fund' : 'Multiple Kits'}
+                         amount === 2000 ? '1 Kit' : 
+                         amount === 2500 ? '1 Kit (Big)' :
+                         amount === 5000 ? '2 Kits' : 
+                         amount === 10000 ? '4 Kits' : 'Multiple'}
                       </div>
                     </button>
                   ))}
