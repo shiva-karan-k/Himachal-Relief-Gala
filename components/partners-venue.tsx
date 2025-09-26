@@ -182,6 +182,38 @@ END:VCALENDAR`;
             </div>
           </div>
         </div>
+
+        {/* Contact Information */}
+        <div className="border-t border-white/20 pt-12 mt-12">
+          <div className="text-center mb-8">
+            <div className="text-white/70 text-sm mb-2">For inquiries and support</div>
+            <a 
+              href="tel:+919258729273" 
+              className="text-[#6DE1FF] hover:text-[#00E0C6] transition-colors focus-ring rounded text-xl font-medium"
+            >
+              📞 +91 92587 29273
+            </a>
+          </div>
+
+          {/* Credits */}
+          <div className="border-t border-white/20 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-white/70 text-sm">
+                © 2025 Yuvathon. All rights reserved.
+              </div>
+              <div className="text-white/70 text-sm">
+                Built with ❤️ by <a 
+                  href="https://studio.sted.space" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#6DE1FF] hover:text-[#00E0C6] transition-colors focus-ring rounded px-1"
+                >
+                  STED Studio
+                </a> & Cyber Cubes
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

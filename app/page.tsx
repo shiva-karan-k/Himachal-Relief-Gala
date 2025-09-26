@@ -7,7 +7,6 @@ import DonationSection from '@/components/donation-section';
 import BloodDonationSection from '@/components/blood-donation-section';
 import EventSchedule from '@/components/event-schedule';
 import PartnersVenue from '@/components/partners-venue';
-import Footer from '@/components/footer';
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
       <TicketsSection />
       <EventSchedule />
       <PartnersVenue />
-      <Footer />
     </main>
   );
 }

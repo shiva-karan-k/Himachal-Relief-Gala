@@ -66,18 +66,6 @@ export default function FloatingNav() {
                 >
                   4-Days
                 </button>
-                <button 
-                  onClick={() => scrollToSection('faq')}
-                  className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
-                >
-                  FAQ
-                </button>
-                <button 
-                  onClick={() => scrollToSection('contact')}
-                  className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
-                >
-                  Contact
-                </button>
               </div>
 
               {/* Mobile Menu Button */}
@@ -117,18 +105,6 @@ export default function FloatingNav() {
                     className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
                   >
                     4-Days
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('faq')}
-                    className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
-                  >
-                    FAQ
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('contact')}
-                    className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
-                  >
-                    Contact
                   </button>
                 </div>
               </div>

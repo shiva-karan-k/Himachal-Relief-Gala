@@ -113,8 +113,8 @@ export default function DonationSection() {
                   </h3>
                   <div className="w-full h-48 rounded-xl overflow-hidden mb-4">
                     <img 
-                      src="/hp.webp" 
-                      alt="Relief kit being distributed to Himachal Pradesh family" 
+                      src="/kullu-F1.jpg" 
+                      alt="Kullu district flood damage - families needing relief support" 
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -128,7 +128,7 @@ export default function DonationSection() {
                 </h3>
 
                 {/* Preset Amounts */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3 mb-6">
                   {siteConfig.donationPresets.map((amount) => (
                     <button
                       key={amount}
@@ -142,12 +142,13 @@ export default function DonationSection() {
                           : 'border-white/20 glass-dark hover:border-[#6DE1FF]/50'
                       }`}
                     >
-                      <div className="text-xl font-bold">₹{amount}</div>
+                      <div className="text-lg font-bold">₹{amount}</div>
                       <div className="text-xs text-white/70 mt-1">
-                        {amount === 2000 ? '1 Kit (Standard)' : 
+                        {amount < 2000 ? 'Support' :
+                         amount === 2000 ? '1 Kit (Standard)' : 
                          amount === 2500 ? '1 Kit (Bigger Family)' :
                          amount === 5000 ? '2 Kits Fund' : 
-                         '4 Kits Fund'}
+                         amount === 10000 ? '4 Kits Fund' : 'Multiple Kits'}
                       </div>
                     </button>
                   ))}

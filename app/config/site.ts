@@ -8,7 +8,7 @@ export const siteConfig = {
     {"tier": "Patron Table", "price": 2000, "link": "RAZORPAY_TICKET_PATRON_LINK", "description": "Reserved table for 10 guests", "includes": ["Reserved table for 10", "Recognition on stage", "Brochure acknowledgment", "Premium seating"]},
     {"tier": "Corporate Table", "price": 5000, "link": "RAZORPAY_TICKET_CORP_LINK", "description": "Branding space at venue", "includes": ["Table for 10 guests", "Branding space at venue", "On-stage acknowledgment", "Corporate logo display"]}
   ],
-  donationPresets: [2000, 2500, 5000, 10000],
+  donationPresets: [100, 200, 500, 800, 1000, 2000, 2500, 5000, 10000],
   razorpay: {
     donationLink: "RAZORPAY_DONATION_LINK",
     ticketGeneralLink: "RAZORPAY_TICKET_GENERAL_LINK",
