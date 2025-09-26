@@ -9,10 +9,6 @@ const faqs = [
     answer: "Donations are non-refundable as they directly support relief efforts. Ticket refunds are available up to 48 hours before the event date. Please contact our support team for assistance."
   },
   {
-    question: "Will I receive a tax receipt for my donation?",
-    answer: "Yes, all donations above ₹500 qualify for 80G tax exemption. Digital receipts will be emailed within 48 hours of donation confirmation."
-  },
-  {
     question: "What are the entry rules and dress code for the gala?",
     answer: "Entry requires valid tickets. Traditional or formal attire is encouraged but not mandatory. Please carry a government-issued ID for verification."
   },

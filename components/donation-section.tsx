@@ -106,6 +106,23 @@ export default function DonationSection() {
             {/* Donation Panel */}
             <div className="lg:col-span-2">
               <div className="glass rounded-2xl p-8">
+                {/* Impact Image - First Thing Users See */}
+                <div className="mb-8">
+                  <h3 className="font-saira text-xl font-semibold mb-4 text-white text-center">
+                    Your Impact in Action
+                  </h3>
+                  <div className="w-full h-48 rounded-xl overflow-hidden mb-4">
+                    <img 
+                      src="/hp.webp" 
+                      alt="Relief kit being distributed to Himachal Pradesh family" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="text-sm text-white/70 text-center mb-6">
+                    Your donation directly provides essential relief kits to families affected by the floods in Kullu district.
+                  </p>
+                </div>
+
                 <h3 className="font-saira text-xl font-semibold mb-6 text-white">
                   Select Amount
                 </h3>
@@ -253,38 +270,6 @@ export default function DonationSection() {
                 </div>
               </div>
 
-              {/* UPI QR Code */}
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="flex items-center justify-center mb-3">
-                  <QrCode className="w-5 h-5 text-[#6A0EDD] mr-2" />
-                  <h4 className="font-semibold text-white">
-                    Scan & Pay
-                  </h4>
-                </div>
-                <div className="w-32 h-32 mx-auto mb-3 bg-white rounded-lg flex items-center justify-center p-1">
-                  <img 
-                    src="/upi-qr-code.png" 
-                    alt="HP State Cooperative Bank UPI QR Code" 
-                    className="w-full h-full object-contain rounded"
-                  />
-                </div>
-                <p className="text-xs text-white/70 mb-2">
-                  UPI ID: getepay.hpscbank228371@icici
-                </p>
-                <p className="text-xs text-white/60">
-                  HP State Cooperative Bank
-                </p>
-              </div>
-
-              {/* Tax Benefits */}
-              <div className="glass rounded-xl p-6">
-                <h4 className="font-semibold text-white mb-2">
-                  Tax Benefits
-                </h4>
-                <p className="text-sm text-white/70">
-                  80G tax exemption certificate provided for all donations above ₹500.
-                </p>
-              </div>
             </div>
           </div>
         </div>

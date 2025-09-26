@@ -1,3 +1,5 @@
+"use client";
+
 import { Truck, Users, BarChart3, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 

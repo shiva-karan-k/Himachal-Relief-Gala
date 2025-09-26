@@ -20,9 +20,9 @@ export default function Home() {
       {/* Main Sections */}
       <HeroSection />
       <WhyMatters />
+      <DonationSection />
       <WhosComing />
       <TicketsSection />
-      <DonationSection />
       <BloodDonationSection />
       <EventSchedule />
       <TransparencySection />

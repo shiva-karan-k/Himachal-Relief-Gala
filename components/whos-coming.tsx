@@ -3,22 +3,19 @@
 import { useEffect, useState } from 'react';
 import { Users, Star, Briefcase, Heart } from 'lucide-react';
 
-const politicians = [
-  "Sukhvinder Singh Sukhu", "Jai Ram Thakur", "Vikramaditya Singh", "Harsh Vardhan Chauhan",
-  "Mukesh Agnihotri", "Govind Singh Thakur", "Anil Sharma", "Kaul Singh Thakur",
-  "Rajesh Dharmani", "Sanjay Awasthi", "Bambar Thakur", "Suresh Kashyap"
+const disasterHeroes = [
+  "NDRF Personnel", "Police Officers", "Local Administration", "Ronid Pundir", 
+  "Sahil Thakur", "Sarbjeet Singh Bobby"
 ];
 
-const actors = [
-  "Kangana Ranaut", "Preity Zinta", "Yami Gautam", "Anupam Kher",
-  "Pankaj Tripathi", "Rajkummar Rao", "Kriti Sanon", "Ayushmann Khurrana",
-  "Taapsee Pannu", "Bhumi Pednekar", "Kartik Aaryan", "Shraddha Kapoor"
+const communityLeaders = [
+  "Local Singers", "Natti Folk Dancers", "Kullu Dhol Performers", "Village Elders",
+  "Women's Empowerment Leaders", "Community Volunteers", "Relief Coordinators"
 ];
 
-const influencers = [
-  "Ranveer Allahbadia", "Ankur Warikoo", "Raj Shamani", "Tanmay Bhat",
-  "Ashish Chanchlani", "Carry Minati", "Bhuvan Bam", "Harsh Beniwal",
-  "Prajakta Koli", "Dolly Singh", "Kusha Kapila", "Mostlysane"
+const distinguishedGuests = [
+  "Kullu District Administration", "Himachal Tourism Board", "Local Relief Foundation",
+  "Blood Camp Organizers", "Medical Staff", "Cultural Artists"
 ];
 
 const ScrollingNames = ({ names, icon: Icon, color, delay = 0 }: { 
@@ -82,30 +79,41 @@ export default function WhosComing() {
 
         {/* Scrolling Names */}
         <div className="glass rounded-2xl p-8 space-y-6">
-          <ScrollingNames 
-            names={politicians} 
-            icon={Briefcase} 
-            color="text-[#6DE1FF]"
-            delay={0}
-          />
-          <ScrollingNames 
-            names={actors} 
-            icon={Star} 
-            color="text-[#FF9A1F]"
-            delay={1}
-          />
-          <ScrollingNames 
-            names={influencers} 
-            icon={Heart} 
-            color="text-[#00E0C6]"
-            delay={2}
-          />
-          <ScrollingNames 
-            names={[...politicians.slice(6), ...actors.slice(6), ...influencers.slice(6)]} 
-            icon={Users} 
-            color="text-[#B31E2B]"
-            delay={3}
-          />
+          <div className="mb-4">
+            <h4 className="font-saira text-lg font-semibold text-[#B31E2B] mb-2 flex items-center">
+              🏆 Disaster Heroes Being Honored
+            </h4>
+            <ScrollingNames 
+              names={disasterHeroes} 
+              icon={Heart} 
+              color="text-[#B31E2B]"
+              delay={0}
+            />
+          </div>
+          
+          <div className="mb-4">
+            <h4 className="font-saira text-lg font-semibold text-[#FF9A1F] mb-2 flex items-center">
+              🎭 Community Performers & Leaders
+            </h4>
+            <ScrollingNames 
+              names={communityLeaders} 
+              icon={Star} 
+              color="text-[#FF9A1F]"
+              delay={1}
+            />
+          </div>
+
+          <div className="mb-4">
+            <h4 className="font-saira text-lg font-semibold text-[#6DE1FF] mb-2 flex items-center">
+              🤝 Distinguished Guests & Supporters
+            </h4>
+            <ScrollingNames 
+              names={distinguishedGuests} 
+              icon={Briefcase} 
+              color="text-[#6DE1FF]"
+              delay={2}
+            />
+          </div>
         </div>
 
         {/* Call to Action */}

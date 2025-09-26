@@ -163,7 +163,6 @@ export default function ThankYou() {
         <div className="text-center mt-8">
           <p className="text-white/60 text-sm">
             A confirmation email has been sent to your registered email address.
-            {orderDetails.type === 'donation' && ' Your 80G tax exemption certificate will follow within 48 hours.'}
           </p>
         </div>
       </div>

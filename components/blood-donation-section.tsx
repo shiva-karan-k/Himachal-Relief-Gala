@@ -4,9 +4,17 @@ import { useState } from 'react';
 import { Heart, Clock, MapPin, Users, Phone, ArrowRight, ExternalLink, Shield } from 'lucide-react';
 
 export default function BloodDonationSection() {
-  const handleRegister = () => {
-    // Open the Google Forms registration
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSfhwRCYSYrJTp0Vof6Eam7UeFAdtW_Z2CwiKYCpO37aG7wJwQ/viewform', '_blank');
+  const handleRegister = (bloodGroup?: string) => {
+    let formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfhwRCYSYrJTp0Vof6Eam7UeFAdtW_Z2CwiKYCpO37aG7wJwQ/viewform';
+    
+    // Pre-fill blood group if provided
+    if (bloodGroup) {
+      // Google Forms pre-fill format: ?entry.FIELD_ID=VALUE
+      // You'll need to replace 'entry.123456789' with the actual field ID from your form
+      formUrl += `?entry.123456789=${encodeURIComponent(bloodGroup)}`;
+    }
+    
+    window.open(formUrl, '_blank');
   };
 
   const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
@@ -169,14 +177,16 @@ export default function BloodDonationSection() {
               </h4>
               <div className="grid grid-cols-4 gap-3">
                 {bloodGroups.map((group, index) => (
-                  <div 
+                  <button 
                     key={group}
-                    className={`text-center p-3 rounded-xl bg-gradient-to-br ${
-                      index % 4 === 0 ? 'from-[#B31E2B]/20 to-[#FF4444]/20 border border-[#B31E2B]/30' :
-                      index % 4 === 1 ? 'from-[#FF9A1F]/20 to-[#FFB84D]/20 border border-[#FF9A1F]/30' :
-                      index % 4 === 2 ? 'from-[#6DE1FF]/20 to-[#87E8FF]/20 border border-[#6DE1FF]/30' :
-                      'from-[#00E0C6]/20 to-[#33E8D0]/20 border border-[#00E0C6]/30'
+                    onClick={() => handleRegister(group)}
+                    className={`text-center p-3 rounded-xl bg-gradient-to-br hover:scale-105 transition-all duration-300 cursor-pointer ${
+                      index % 4 === 0 ? 'from-[#B31E2B]/20 to-[#FF4444]/20 border border-[#B31E2B]/30 hover:from-[#B31E2B]/30 hover:to-[#FF4444]/30' :
+                      index % 4 === 1 ? 'from-[#FF9A1F]/20 to-[#FFB84D]/20 border border-[#FF9A1F]/30 hover:from-[#FF9A1F]/30 hover:to-[#FFB84D]/30' :
+                      index % 4 === 2 ? 'from-[#6DE1FF]/20 to-[#87E8FF]/20 border border-[#6DE1FF]/30 hover:from-[#6DE1FF]/30 hover:to-[#87E8FF]/30' :
+                      'from-[#00E0C6]/20 to-[#33E8D0]/20 border border-[#00E0C6]/30 hover:from-[#00E0C6]/30 hover:to-[#33E8D0]/30'
                     }`}
+                    title={`Register for blood donation with ${group} blood group`}
                   >
                     <div className={`text-lg font-bold ${
                       index % 4 === 0 ? 'text-[#FF4444]' :
@@ -189,7 +199,7 @@ export default function BloodDonationSection() {
                     <div className="text-xs text-white/60 mt-1">
                       {group.includes('+') ? 'Positive' : 'Negative'}
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
               <p className="text-sm text-center text-white/70 mt-4">

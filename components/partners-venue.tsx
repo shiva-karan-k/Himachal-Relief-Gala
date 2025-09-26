@@ -2,17 +2,12 @@
 
 import { MapPin, Calendar, ExternalLink } from 'lucide-react';
 
-const leadPartner = {
-  name: "Cyber Cubes",
-  description: "Leading technology partner powering our digital initiatives",
-  website: "https://cybercubes.tech"
-};
-
 const partners = [
   { 
-    name: "STED Studio", 
-    description: "Creative design and development",
-    website: "https://studio.sted.space"
+    name: "STED Studio & Cyber Cubes", 
+    description: "Website, SMM & crowdfunding campaigns",
+    website: "https://studio.sted.space",
+    isStedStudio: true
   },
   { 
     name: "Himachal Tourism Board", 
@@ -65,47 +60,37 @@ END:VCALENDAR`;
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="font-saira text-3xl md:text-4xl font-bold mb-4 text-white">
-              Our Partners
+              Collaborative Efforts
             </h2>
             <p className="text-lg text-white/70">
               Supporting our mission together
             </p>
           </div>
 
-          {/* Lead Partner */}
-          <div className="text-center mb-12">
-            <h3 className="font-saira text-xl font-semibold mb-6 text-[#6DE1FF]">
-              Headed by
-            </h3>
-            <div className="glass rounded-2xl p-8 max-w-md mx-auto hover-lift">
-              <div className="mb-4">
-                <h4 className="font-saira text-2xl font-bold text-white mb-2">
-                  {leadPartner.name}
-                </h4>
-                <p className="text-white/70 mb-4">{leadPartner.description}</p>
-                <a 
-                  href={leadPartner.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-[#6DE1FF] hover:text-[#00E0C6] transition-colors focus-ring rounded px-3 py-1"
-                >
-                  Visit Website <ExternalLink className="w-4 h-4 ml-1" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Supporting Partners */}
+          {/* All Partners */}
           <div>
-            <h3 className="font-saira text-xl font-semibold mb-6 text-white text-center">
-              Supporting Partners
-            </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {partners.map((partner, index) => (
                 <div key={index} className="glass rounded-xl p-6 hover-lift text-center">
-                  <h4 className="font-semibold text-white mb-2">{partner.name}</h4>
+                  <h4 className="font-semibold text-white mb-2">
+                    {partner.isStedStudio ? (
+                      <>
+                        <a 
+                          href={partner.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#6DE1FF] hover:text-[#00E0C6] transition-colors focus-ring rounded"
+                        >
+                          STED Studio
+                        </a>
+                        <span className="text-white"> & Cyber Cubes</span>
+                      </>
+                    ) : (
+                      partner.name
+                    )}
+                  </h4>
                   <p className="text-white/70 text-sm mb-3">{partner.description}</p>
-                  {partner.website && (
+                  {partner.website && !partner.isStedStudio && (
                     <a 
                       href={partner.website}
                       target="_blank"

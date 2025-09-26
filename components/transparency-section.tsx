@@ -6,28 +6,28 @@ const updates = [
     action: "₹45,000 raised → 20 kits dispatched",
     location: "Kullu Valley villages",
     status: "completed",
-    image: "https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+    image: "/hp.webp"
   },
   {
     time: "5:15 PM Today", 
     action: "₹32,500 raised → 15 kits prepared",
     location: "Manali relief center",
     status: "in-progress",
-    image: "https://images.pexels.com/photos/6995245/pexels-photo-6995245.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+    image: "/hp2.webp"
   },
   {
     time: "2:00 PM Today",
     action: "₹28,000 raised → 12 kits dispatched", 
     location: "Bhuntar area families",
     status: "completed",
-    image: "https://images.pexels.com/photos/6646919/pexels-photo-6646919.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+    image: "/kullu-F1.jpg"
   },
   {
     time: "11:30 AM Today",
     action: "Local procurement complete",
     location: "Kullu market vendors", 
     status: "completed",
-    image: "https://images.pexels.com/photos/4253312/pexels-photo-4253312.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2"
+    image: "/Patlikuhal bridge Kullu.webp"
   }
 ];
 

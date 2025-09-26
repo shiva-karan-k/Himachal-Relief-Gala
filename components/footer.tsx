@@ -97,12 +97,6 @@ export default function Footer() {
               >
                 Terms of Service
               </a>
-              <a 
-                href="/legal#tax"
-                className="block text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
-              >
-                Tax Information
-              </a>
             </div>
           </div>
 

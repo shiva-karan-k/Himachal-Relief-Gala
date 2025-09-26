@@ -209,7 +209,7 @@ export default function TicketsSection() {
         </div>
 
         {/* Tickets Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
           {siteConfig.tickets.map((ticket, index) => {
             const Icon = ticketIcons[index];
             const colorClass = ticketColors[index];

@@ -42,7 +42,7 @@ export default function Legal() {
               <h3 className="text-white font-semibold text-lg mt-6">How We Use Your Information</h3>
               <ul className="list-disc list-inside space-y-2">
                 <li>Process donations and ticket purchases</li>
-                <li>Send confirmation emails and tax receipts</li>
+                <li>Send confirmation emails and donation receipts</li>
                 <li>Provide customer support</li>
                 <li>Send updates about our relief efforts (with consent)</li>
                 <li>Comply with legal obligations</li>

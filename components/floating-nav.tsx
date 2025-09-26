@@ -61,6 +61,12 @@ export default function FloatingNav() {
                   Donate
                 </button>
                 <button 
+                  onClick={() => scrollToSection('schedule')}
+                  className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
+                >
+                  4-Days
+                </button>
+                <button 
                   onClick={() => scrollToSection('faq')}
                   className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
                 >
@@ -105,6 +111,12 @@ export default function FloatingNav() {
                     className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
                   >
                     Donate
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('schedule')}
+                    className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
+                  >
+                    4-Days
                   </button>
                   <button 
                     onClick={() => scrollToSection('faq')}
