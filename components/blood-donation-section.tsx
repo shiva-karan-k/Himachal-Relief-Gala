@@ -156,10 +156,10 @@ export default function BloodDonationSection() {
                 </p>
               </div>
 
-              <button
-                onClick={handleRegister}
-                className="w-full bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center hover:scale-105 glow-red"
-              >
+                <button
+                  onClick={() => handleRegister()}
+                  className="w-full bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center hover:scale-105 glow-red"
+                >
                 <ExternalLink className="w-5 h-5 mr-2" />
                 Register for Blood Donation
                 <ArrowRight className="w-5 h-5 ml-2" />
