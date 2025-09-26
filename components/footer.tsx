@@ -145,7 +145,7 @@ export default function Footer() {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-white/70 text-sm">
-              © 2025 Himachal Relief & Gala. All rights reserved.
+              © 2025 Yuvathon. All rights reserved.
             </div>
             <div className="text-white/70 text-sm">
               Built with ❤️ by <a 

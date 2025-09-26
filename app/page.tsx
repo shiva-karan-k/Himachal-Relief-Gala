@@ -6,9 +6,7 @@ import TicketsSection from '@/components/tickets-section';
 import DonationSection from '@/components/donation-section';
 import BloodDonationSection from '@/components/blood-donation-section';
 import EventSchedule from '@/components/event-schedule';
-import TransparencySection from '@/components/transparency-section';
 import PartnersVenue from '@/components/partners-venue';
-import FAQSection from '@/components/faq-section';
 import Footer from '@/components/footer';
 
 export default function Home() {
@@ -19,15 +17,13 @@ export default function Home() {
       
       {/* Main Sections */}
       <HeroSection />
-      <WhyMatters />
       <DonationSection />
+      <BloodDonationSection />
+      <WhyMatters />
       <WhosComing />
       <TicketsSection />
-      <BloodDonationSection />
       <EventSchedule />
-      <TransparencySection />
       <PartnersVenue />
-      <FAQSection />
       <Footer />
     </main>
   );

@@ -23,7 +23,7 @@ export default function ThankYou() {
     setOrderDetails({ type, amount, orderId, timestamp: new Date().toLocaleString('en-IN') });
   }, []);
 
-  const shareText = `I just supported the Himachal Relief & Gala! Join me in helping families affected by floods & landslides. Every contribution makes a difference. #HimachalRelief #KulluDussehra`;
+  const shareText = `I just supported the Yuvathon! Join me in helping families affected by floods & landslides. Every contribution makes a difference. #Yuvathon #KulluDussehra`;
   
   const shareUrl = typeof window !== 'undefined' ? window.location.origin : '';
 

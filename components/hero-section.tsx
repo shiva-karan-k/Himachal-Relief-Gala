@@ -83,8 +83,8 @@ export default function HeroSection() {
       {/* Background Elements */}
       <div className="absolute inset-0">
         <img 
-          src="https://images.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2"
-          alt="Majestic Himachal Pradesh mountains with valleys and rivers"
+          src="/rath-processsion.jpg"
+          alt="Kullu Dussehra rath procession celebration"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#070C14]/80 via-[#0A1018]/70 to-[#0E1826]/80"></div>
@@ -99,9 +99,8 @@ export default function HeroSection() {
         {/* Main Heading */}
         <div className="mb-8">
           <h1 className="font-saira text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-glow">
-            <span className="text-[#6DE1FF]">Himachal Relief</span>
-            <span className="text-white"> & </span>
-            <span className="text-[#FF9A1F]">Gala</span>
+            <span className="text-[#6DE1FF]">Yuva</span>
+            <span className="text-[#FF9A1F]">thon</span>
           </h1>
           <p className="text-xl md:text-2xl font-light text-[#00E0C6] mb-2">
             Kullu Dussehra • 4–7 Oct
@@ -165,21 +164,21 @@ export default function HeroSection() {
         <div className="flex flex-col lg:flex-row gap-4 justify-center items-center mb-8 w-full">
           <button 
             onClick={handleDonate}
-            className="btn-primary text-lg px-8 py-4 glow-saffron hover:scale-105 transition-all duration-300"
+            className="btn-primary text-lg px-8 py-4 glow-saffron hover:scale-105 transition-all duration-300 flex items-center justify-center"
           >
             <Heart className="w-5 h-5 mr-2" />
             Donate Now
           </button>
           <button 
             onClick={scrollToTickets}
-            className="btn-secondary text-lg px-8 py-4"
+            className="btn-secondary text-lg px-8 py-4 flex items-center justify-center"
           >
-            Buy Gala Tickets
+            Buy Pahadi Night Tickets
             <ArrowRight className="w-5 h-5 ml-2" />
           </button>
           <button 
             onClick={scrollToBloodDonate}
-            className="bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 glow-red flex items-center"
+            className="bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 glow-red flex items-center justify-center"
           >
             <Droplets className="w-5 h-5 mr-2" />
             Donate Blood

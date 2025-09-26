@@ -37,7 +37,7 @@ export default function FloatingNav() {
             <div className="flex items-center justify-between">
               {/* Logo */}
               <div className="font-saira font-bold text-xl text-[#6DE1FF] tracking-wide">
-                Himachal Relief & Gala
+                Yuvathon
               </div>
 
               {/* Desktop Navigation */}
@@ -142,27 +142,27 @@ export default function FloatingNav() {
         {/* Donate Button */}
         <button 
           onClick={() => scrollToSection('donate')}
-          className="btn-primary px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-saffron"
+          className="btn-primary px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-saffron flex items-center justify-center"
           aria-label="Donate Now"
         >
           <Heart className="w-5 h-5 md:mr-2" />
           <span className="hidden md:inline">Donate Now</span>
         </button>
         
-        {/* Gala Seat Button */}
+        {/* Pahadi Night Seat Button */}
         <button 
           onClick={() => scrollToSection('tickets')}
-          className="btn-secondary px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-blue"
-          aria-label="Get a seat at Gala Night"
+          className="btn-secondary px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-blue flex items-center justify-center"
+          aria-label="Get a seat at Pahadi Night"
         >
           <Ticket className="w-5 h-5 md:mr-2" />
-          <span className="hidden md:inline">Get a seat at Gala Night</span>
+          <span className="hidden md:inline">Get a seat at Pahadi Night</span>
         </button>
 
         {/* Blood Donation Button */}
         <button 
           onClick={() => scrollToSection('blood-donate')}
-          className="bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-red"
+          className="bg-gradient-to-r from-[#B31E2B] to-[#FF4444] hover:from-[#A01A26] hover:to-[#FF3333] text-white px-4 py-3 rounded-lg shadow-lg hover:scale-105 transition-all duration-300 glow-red flex items-center justify-center"
           aria-label="Donate Blood"
         >
           <Droplets className="w-5 h-5 md:mr-2" />

@@ -1,10 +1,10 @@
 export const siteConfig = {
   goal: 2000000,
-  raised: 0,
-  donors: 0,
+  raised: 120000,
+  donors: 79,
   ticketsSold: 0,
   tickets: [
-    {"tier": "General", "price": 200, "link": "RAZORPAY_TICKET_GENERAL_LINK", "description": "Entry to gala", "includes": ["Entry to gala", "Cultural performances", "Himachali cuisine dinner"]},
+    {"tier": "General", "price": 200, "link": "RAZORPAY_TICKET_GENERAL_LINK", "description": "Entry to Pahadi Night", "includes": ["Entry to Pahadi Night", "Cultural performances", "Himachali cuisine dinner"]},
     {"tier": "Patron Table", "price": 2000, "link": "RAZORPAY_TICKET_PATRON_LINK", "description": "Reserved table for 10 guests", "includes": ["Reserved table for 10", "Recognition on stage", "Brochure acknowledgment", "Premium seating"]},
     {"tier": "Corporate Table", "price": 5000, "link": "RAZORPAY_TICKET_CORP_LINK", "description": "Branding space at venue", "includes": ["Table for 10 guests", "Branding space at venue", "On-stage acknowledgment", "Corporate logo display"]}
   ],

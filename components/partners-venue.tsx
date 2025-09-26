@@ -2,38 +2,18 @@
 
 import { MapPin, Calendar, ExternalLink } from 'lucide-react';
 
-const partners = [
-  { 
-    name: "STED Studio & Cyber Cubes", 
-    description: "Website, SMM & crowdfunding campaigns",
-    website: "https://studio.sted.space",
-    isStedStudio: true
-  },
-  { 
-    name: "Himachal Tourism Board", 
-    description: "Event coordination and tourism support"
-  },
-  { 
-    name: "Kullu District Administration", 
-    description: "Official partnership & fair distribution"
-  },
-  { 
-    name: "Local Relief Foundation", 
-    description: "Kullu-based volunteers & ground support"
-  }
-];
 
 export default function PartnersVenue() {
   const handleAddToCalendar = () => {
     const startDate = '20251004T060000Z';
     const endDate = '20251007T220000Z';
-    const title = encodeURIComponent('Himachal Relief & Gala - Kullu Dussehra');
+    const title = encodeURIComponent('Yuvathon - Kullu Dussehra');
     const details = encodeURIComponent('4-day charity gala for Himachal flood relief during Kullu Dussehra celebration');
     const location = encodeURIComponent('Kullu, Himachal Pradesh, India');
     
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Himachal Relief Gala//EN
+PRODID:-//Yuvathon//EN
 BEGIN:VEVENT
 UID:himachal-relief-gala-2025@example.com
 DTSTART:${startDate}
@@ -56,55 +36,6 @@ END:VCALENDAR`;
   return (
     <section className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Partners Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="font-saira text-3xl md:text-4xl font-bold mb-4 text-white">
-              Collaborative Efforts
-            </h2>
-            <p className="text-lg text-white/70">
-              Supporting our mission together
-            </p>
-          </div>
-
-          {/* All Partners */}
-          <div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {partners.map((partner, index) => (
-                <div key={index} className="glass rounded-xl p-6 hover-lift text-center">
-                  <h4 className="font-semibold text-white mb-2">
-                    {partner.isStedStudio ? (
-                      <>
-                        <a 
-                          href={partner.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#6DE1FF] hover:text-[#00E0C6] transition-colors focus-ring rounded"
-                        >
-                          STED Studio
-                        </a>
-                        <span className="text-white"> & Cyber Cubes</span>
-                      </>
-                    ) : (
-                      partner.name
-                    )}
-                  </h4>
-                  <p className="text-white/70 text-sm mb-3">{partner.description}</p>
-                  {partner.website && !partner.isStedStudio && (
-                    <a 
-                      href={partner.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-[#6DE1FF] hover:text-[#00E0C6] transition-colors focus-ring rounded text-sm"
-                    >
-                      Visit <ExternalLink className="w-3 h-3 ml-1" />
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Venue Section */}
         <div className="grid lg:grid-cols-2 gap-8">
@@ -247,7 +178,7 @@ END:VCALENDAR`;
             </div>
             <div>
               <div className="text-[#00E0C6] font-semibold mb-2">🏆 Recognition</div>
-              <div className="text-white/70">Donor and guest names acknowledged during gala night (optional)</div>
+              <div className="text-white/70">Donor and guest names acknowledged during Pahadi Night (optional)</div>
             </div>
           </div>
         </div>

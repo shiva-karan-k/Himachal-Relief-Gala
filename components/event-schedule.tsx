@@ -44,12 +44,12 @@ const schedule = [
 ];
 
 const distinguishedGuests = [
-  { name: "NDRF Personnel", role: "Disaster Hero", image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2" },
-  { name: "Ronid Pundir", role: "Student Flood Hero", image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2" },
-  { name: "Sahil Thakur", role: "Student Flood Hero", image: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2" },
-  { name: "Sarbjeet Singh Bobby", role: "Community Philanthropist", image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2" },
-  { name: "Local Singers", role: "Cultural Performers", image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2" },
-  { name: "Natti Folk Dancers", role: "Traditional Artists", image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2" }
+  { name: "NDRF Personnel", role: "Disaster Hero" },
+  { name: "Ronid Pundir", role: "Student Flood Hero" },
+  { name: "Sahil Thakur", role: "Student Flood Hero" },
+  { name: "Sarbjeet Singh Bobby", role: "Community Philanthropist" },
+  { name: "Local Singers", role: "Cultural Performers" },
+  { name: "Natti Folk Dancers", role: "Traditional Artists" }
 ];
 
 export default function EventSchedule() {
@@ -117,12 +117,8 @@ export default function EventSchedule() {
           <div className="flex flex-wrap justify-center gap-8 mb-8">
             {distinguishedGuests.map((guest, index) => (
               <div key={index} className="text-center">
-                <div className="w-20 h-20 rounded-full overflow-hidden mb-3 mx-auto ring-2 ring-[#6DE1FF]/30">
-                  <img 
-                    src={guest.image}
-                    alt={`${guest.name} - ${guest.role}`}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-20 h-20 rounded-full mb-3 mx-auto ring-2 ring-[#6DE1FF]/30 bg-gradient-to-br from-[#6DE1FF]/20 to-[#00E0C6]/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#6DE1FF] to-[#00E0C6]"></div>
                 </div>
                 <div className="text-sm font-medium text-white">{guest.name}</div>
                 <div className="text-xs text-[#00E0C6]">{guest.role}</div>

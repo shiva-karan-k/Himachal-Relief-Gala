@@ -10,19 +10,19 @@ const sairaExtraCondensed = Saira_Extra_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: 'Himachal Relief & Gala • Kullu Dussehra 4–7 Oct',
+  title: 'Yuvathon • Kullu Dussehra 4–7 Oct',
   description: 'Join us for a 4-day charity gala during Kullu Dussehra to raise ₹20,00,000 for groceries & essential supplies to families impacted by floods/landslides in Himachal Pradesh.',
   keywords: 'Himachal Pradesh, relief fund, charity gala, Kullu Dussehra, flood relief, landslide relief, donation',
   openGraph: {
-    title: 'Himachal Relief & Gala • Kullu Dussehra 4–7 Oct',
+    title: 'Yuvathon • Kullu Dussehra 4–7 Oct',
     description: 'Immediate groceries & essentials for families affected by floods & landslides.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Himachal Relief & Gala',
+    siteName: 'Yuvathon',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Himachal Relief & Gala • Kullu Dussehra 4–7 Oct',
+    title: 'Yuvathon • Kullu Dussehra 4–7 Oct',
     description: 'Immediate groceries & essentials for families affected by floods & landslides.',
   },
   icons: {
@@ -46,7 +46,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Event",
-              "name": "Himachal Relief & Gala • Kullu Dussehra 4–7 Oct",
+              "name": "Yuvathon • Kullu Dussehra 4–7 Oct",
               "startDate": "2025-10-04",
               "endDate": "2025-10-07",
               "location": {
