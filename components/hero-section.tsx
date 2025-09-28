@@ -67,10 +67,28 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center pt-20">
         {/* Main Heading */}
         <div className="mb-8">
-          <h1 className="font-saira text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-glow">
-            <span className="text-[#6DE1FF]">Yuva</span>
-            <span className="text-[#FF9A1F]">thon</span>
-          </h1>
+          <div className="flex items-center justify-center space-x-4 mb-4">
+            <img 
+              src="/samart-logo.jpg" 
+              alt="Samarthya Foundation" 
+              className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  const fallback = document.createElement('div');
+                  fallback.className = 'w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#00E0C6] to-[#6DE1FF] flex items-center justify-center text-white font-bold text-lg md:text-xl';
+                  fallback.textContent = 'SF';
+                  parent.appendChild(fallback);
+                }
+              }}
+            />
+            <h1 className="font-saira text-4xl md:text-6xl lg:text-7xl font-bold text-glow">
+              <span className="text-[#6DE1FF]">Yuva</span>
+              <span className="text-[#FF9A1F]">thon</span>
+            </h1>
+          </div>
           <p className="text-xl md:text-2xl font-light text-[#00E0C6] mb-2">
             Kullu Dussehra • 4–7 Oct
           </p>

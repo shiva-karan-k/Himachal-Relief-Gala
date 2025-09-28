@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Heart, Ticket, Droplets } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +38,10 @@ export default function FloatingNav() {
           }`}>
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <div className="flex items-center space-x-3">
+              <button 
+                onClick={() => router.push('/')}
+                className="flex items-center space-x-3 hover:opacity-80 transition-opacity focus-ring rounded"
+              >
                 <img 
                   src="/samart-logo.jpg" 
                   alt="Samarthya Foundation" 
@@ -57,7 +62,7 @@ export default function FloatingNav() {
                 <div className="font-saira font-bold text-xl text-[#6DE1FF] tracking-wide">
                   Yuvathon
                 </div>
-              </div>
+              </button>
 
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
@@ -67,6 +72,12 @@ export default function FloatingNav() {
                 >
                   About
                 </button>
+                <a 
+                  href="/pricing"
+                  className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
+                >
+                  Pricing
+                </a>
                 <button 
                   onClick={() => scrollToSection('tickets')}
                   className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded"
@@ -107,6 +118,12 @@ export default function FloatingNav() {
                   >
                     About
                   </button>
+                  <a 
+                    href="/pricing"
+                    className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
+                  >
+                    Pricing
+                  </a>
                   <button 
                     onClick={() => scrollToSection('tickets')}
                     className="text-white/80 hover:text-[#6DE1FF] transition-colors focus-ring rounded text-left"
