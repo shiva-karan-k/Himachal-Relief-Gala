@@ -183,8 +183,32 @@ END:VCALENDAR`;
           </div>
         </div>
 
-        {/* Contact Information */}
+        {/* Foundation Information */}
         <div className="border-t border-white/20 pt-12 mt-12">
+          <div className="text-center mb-8">
+            <h3 className="font-saira text-xl font-semibold text-white mb-4">
+              About Samarthya Foundation
+            </h3>
+            <div className="glass rounded-xl p-6 max-w-3xl mx-auto">
+              <p className="text-white/80 mb-4">
+                <strong className="text-[#00E0C6]">Samarthya Foundation</strong> is a registered charitable organization committed to community welfare, disaster relief, and social empowerment. We believe in transparent, accountable, and impactful giving.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="text-[#6DE1FF] font-semibold">80G Registration</div>
+                  <div className="text-white/70">Tax-exempt donations</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-[#FF9A1F] font-semibold">Transparent Process</div>
+                  <div className="text-white/70">Real-time updates</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Information */}
+        <div className="border-t border-white/20 pt-6">
           <div className="text-center mb-8">
             <div className="text-white/70 text-sm mb-2">For inquiries and support</div>
             <a 

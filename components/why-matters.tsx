@@ -102,6 +102,11 @@ export default function WhyMatters() {
             <p className="text-white/70 text-center mt-4 leading-relaxed">
               Our <strong className="text-white">₹20 lakh crowdfunding campaign</strong> will provide essential relief kits to <strong className="text-white">800-1000 families</strong> across <strong className="text-[#FF9A1F]">Kullu district</strong>. Each kit, valued at <strong className="text-white">₹2,000-₹2,500</strong>, contains rice, dal, oil, salt, milk powder, and hygiene essentials—ensuring families have dignified support for weeks.
             </p>
+            <div className="mt-4 p-4 glass-dark rounded-xl">
+              <p className="text-white/80 text-sm text-center">
+                <span className="text-[#00E0C6] font-semibold">Samarthya Foundation</span> is a registered charitable organization working for community welfare and disaster relief. All donations are eligible for <span className="text-[#6DE1FF]">80G tax exemption</span>.
+              </p>
+            </div>
           </div>
 
           {/* Kullu-Specific Relief Information */}

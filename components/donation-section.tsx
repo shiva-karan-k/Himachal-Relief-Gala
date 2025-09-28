@@ -151,8 +151,8 @@ export default function DonationSection() {
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
-                  <Smartphone className="w-5 h-5 mr-2" />
-                  Donate via PhonePe/UPI {selectedAmount ? `₹${selectedAmount}` : customAmount ? `₹${customAmount}` : ''}
+                  <Heart className="w-5 h-5 mr-2" />
+                  Donate Now
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </button>
               </div>

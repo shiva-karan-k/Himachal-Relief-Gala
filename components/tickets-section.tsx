@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Star, Users, Crown, Building2, QrCode, X, Copy, Smartphone } from 'lucide-react';
+import { Star, Users, Crown, Building2, QrCode, X, Copy, Smartphone, Ticket } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
 import { createTicketPayment } from '@/lib/razorpay';
 
@@ -179,8 +179,8 @@ export default function TicketsSection() {
                   onClick={() => handleBuyTicket(ticket)}
                   className="w-full bg-gradient-to-r from-[#6A0EDD] to-[#9747FF] hover:from-[#7B1EEE] hover:to-[#A858FF] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus-ring hover:scale-105 flex items-center justify-center"
                 >
-                  <Smartphone className="w-4 h-4 mr-2" />
-                  Buy via PhonePe/UPI
+                  <Ticket className="w-4 h-4 mr-2" />
+                  Buy Now
                 </button>
               </div>
             );

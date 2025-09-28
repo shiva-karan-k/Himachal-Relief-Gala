@@ -124,9 +124,16 @@ export default function HeroSection() {
           </div>
 
           {/* Microcopy */}
-          <p className="text-white/70 text-sm max-w-2xl mx-auto">
+          <p className="text-white/70 text-sm max-w-2xl mx-auto mb-4">
             Every ₹2,000–₹2,500 funds one family grocery kit (rice, dal, oil, salt, milk powder, hygiene).
           </p>
+          <div className="glass-dark rounded-lg px-4 py-2 inline-block mb-4">
+            <p className="text-white/80 text-sm">
+              <span className="text-[#00E0C6] font-semibold">Samarthya Foundation</span> • 
+              <span className="text-[#6DE1FF]"> 80G Tax Exempt</span> • 
+              <span className="text-[#FF9A1F]">Transparent Distribution</span>
+            </p>
+          </div>
         </div>
 
         {/* CTA Buttons */}
