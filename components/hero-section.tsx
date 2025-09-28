@@ -128,11 +128,27 @@ export default function HeroSection() {
             Every ₹2,000–₹2,500 funds one family grocery kit (rice, dal, oil, salt, milk powder, hygiene).
           </p>
           <div className="glass-dark rounded-lg px-4 py-2 inline-block mb-4">
-            <p className="text-white/80 text-sm">
+            <div className="flex items-center space-x-3 text-white/80 text-sm">
+              <img 
+                src="/samart-logo.jpg" 
+                alt="Samarthya Foundation" 
+                className="w-6 h-6 rounded-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    const fallback = document.createElement('div');
+                    fallback.className = 'w-6 h-6 rounded-full bg-gradient-to-br from-[#00E0C6] to-[#6DE1FF] flex items-center justify-center text-white font-bold text-xs';
+                    fallback.textContent = 'SF';
+                    parent.appendChild(fallback);
+                  }
+                }}
+              />
               <span className="text-[#00E0C6] font-semibold">Samarthya Foundation</span> • 
               <span className="text-[#6DE1FF]"> 80G Tax Exempt</span> • 
               <span className="text-[#FF9A1F]">Transparent Distribution</span>
-            </p>
+            </div>
           </div>
         </div>
 

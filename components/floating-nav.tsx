@@ -36,8 +36,27 @@ export default function FloatingNav() {
           }`}>
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <div className="font-saira font-bold text-xl text-[#6DE1FF] tracking-wide">
-                Yuvathon
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/samart-logo.jpg" 
+                  alt="Samarthya Foundation" 
+                  className="w-10 h-10 rounded-full object-cover"
+                  onError={(e) => {
+                    // Fallback to a colored circle if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      const fallback = document.createElement('div');
+                      fallback.className = 'w-10 h-10 rounded-full bg-gradient-to-br from-[#00E0C6] to-[#6DE1FF] flex items-center justify-center text-white font-bold text-xs';
+                      fallback.textContent = 'SF';
+                      parent.appendChild(fallback);
+                    }
+                  }}
+                />
+                <div className="font-saira font-bold text-xl text-[#6DE1FF] tracking-wide">
+                  Yuvathon
+                </div>
               </div>
 
               {/* Desktop Navigation */}

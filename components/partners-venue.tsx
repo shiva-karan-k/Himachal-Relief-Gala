@@ -186,9 +186,27 @@ END:VCALENDAR`;
         {/* Foundation Information */}
         <div className="border-t border-white/20 pt-12 mt-12">
           <div className="text-center mb-8">
-            <h3 className="font-saira text-xl font-semibold text-white mb-4">
-              About Samarthya Foundation
-            </h3>
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <img 
+                src="/samart-logo.jpg" 
+                alt="Samarthya Foundation" 
+                className="w-12 h-12 rounded-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    const fallback = document.createElement('div');
+                    fallback.className = 'w-12 h-12 rounded-full bg-gradient-to-br from-[#00E0C6] to-[#6DE1FF] flex items-center justify-center text-white font-bold text-sm';
+                    fallback.textContent = 'SF';
+                    parent.appendChild(fallback);
+                  }
+                }}
+              />
+              <h3 className="font-saira text-xl font-semibold text-white">
+                About Samarthya Foundation
+              </h3>
+            </div>
             <div className="glass rounded-xl p-6 max-w-3xl mx-auto">
               <p className="text-white/80 mb-4">
                 <strong className="text-[#00E0C6]">Samarthya Foundation</strong> is a registered charitable organization committed to community welfare, disaster relief, and social empowerment. We believe in transparent, accountable, and impactful giving.
