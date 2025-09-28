@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Shield, Heart, Droplets } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
+import DonationModal from './donation-modal';
 
 export default function HeroSection() {
   const [counters, setCounters] = useState({
@@ -10,6 +11,7 @@ export default function HeroSection() {
     donors: 0,
     tickets: 0
   });
+  const [showDonationModal, setShowDonationModal] = useState(false);
 
   useEffect(() => {
     // Animate counters on mount
@@ -34,40 +36,7 @@ export default function HeroSection() {
   const progressPercentage = (counters.raised / siteConfig.goal) * 100;
 
   const handleDonate = () => {
-    console.log('Hero donate button clicked!');
-    const defaultAmount = 2000;
-    const upiId = 'getepay.hpscbank228371@icici';
-    const name = 'Himachal Relief Fund';
-    const note = `Donation for Himachal Relief - Amount: ₹${defaultAmount}`;
-    
-    // PhonePe deep link format
-    const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${defaultAmount}&tn=${encodeURIComponent(note)}`;
-    
-    // Fallback to generic UPI link
-    const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${defaultAmount}&tn=${encodeURIComponent(note)}`;
-    
-    console.log('Hero PhonePe URL:', phonePeUrl);
-    
-    // Try opening UPI link
-    try {
-      // For desktop, scroll to donation section where they can see QR code
-      if (!navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) {
-        document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-      
-      // For mobile, try UPI deep link
-      window.location.href = genericUpiUrl;
-      
-      // Fallback to PhonePe specifically after delay
-      setTimeout(() => {
-        window.location.href = phonePeUrl;
-      }, 1000);
-      
-    } catch (error) {
-      console.error('Hero UPI link error:', error);
-      alert(`UPI ID: ${upiId}\nAmount: ₹${defaultAmount}\nPlease pay manually through any UPI app.`);
-    }
+    setShowDonationModal(true);
   };
 
   const scrollToTickets = () => {
@@ -189,9 +158,15 @@ export default function HeroSection() {
         {/* Trust Strip */}
         <div className="glass-dark rounded-xl px-6 py-3 inline-flex items-center space-x-4 text-sm text-white/70 mx-auto">
           <Shield className="w-4 h-4 text-[#00E0C6]" />
-          <span>UPI • Cards • Net-banking • 256-bit SSL</span>
+          <span>Cards • Net-banking • Razorpay • 256-bit SSL</span>
         </div>
       </div>
+
+      {/* Donation Modal */}
+      <DonationModal 
+        isOpen={showDonationModal} 
+        onClose={() => setShowDonationModal(false)} 
+      />
     </section>
   );
 }

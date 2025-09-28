@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Heart, Shield, ArrowRight, Smartphone, QrCode, X, Copy } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
-import QRCode from 'qrcode';
+import { createDonationPayment } from '@/lib/razorpay';
 
 export default function DonationSection() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
@@ -38,48 +38,17 @@ export default function DonationSection() {
     }
   };
 
-  const handleDonate = () => {
+  const handleDonate = async () => {
     console.log('Donate button clicked!');
     const amount = selectedAmount || parseInt(customAmount);
     console.log('Amount:', amount, 'Selected:', selectedAmount, 'Custom:', customAmount);
     
     if (amount && amount >= 1) {
-      const upiId = 'getepay.hpscbank228371@icici';
-      const name = 'Himachal Relief Fund';
-      const note = `Donation for Himachal Relief - Amount: ₹${amount}`;
-      
-      // PhonePe deep link format
-      const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&tn=${encodeURIComponent(note)}`;
-      
-      // Fallback to generic UPI link
-      const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&tn=${encodeURIComponent(note)}`;
-      
-      console.log('PhonePe URL:', phonePeUrl);
-      console.log('Generic UPI URL:', genericUpiUrl);
-      
-      // Try opening UPI link directly
       try {
-        // For desktop, show QR code modal
-        if (!navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) {
-          setQrAmount(amount);
-          generateQRCode(amount);
-          setShowQRModal(true);
-          return;
-        }
-        
-        // For mobile, try UPI deep link
-        window.location.href = genericUpiUrl;
-        
-        // Fallback to PhonePe specifically after delay
-        setTimeout(() => {
-          window.location.href = phonePeUrl;
-        }, 1000);
-        
+        await createDonationPayment(amount);
       } catch (error) {
-        console.error('UPI link error:', error);
-        setQrAmount(amount);
-        generateQRCode(amount);
-        setShowQRModal(true);
+        console.error('Payment error:', error);
+        alert('Payment failed. Please try again.');
       }
     } else {
       alert('Please select or enter a valid amount first!');

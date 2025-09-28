@@ -3,6 +3,12 @@ export const siteConfig = {
   raised: 120000,
   donors: 79,
   ticketsSold: 0,
+  foundation: {
+    name: 'Samarthya Foundation',
+    registration: 'Registered under Section 80G of Income Tax Act, 1961',
+    taxExemption: 'Donations are eligible for tax deduction under 80G',
+    contact: '+91 92587 29273'
+  },
   tickets: [
     {"tier": "General", "price": 200, "link": "RAZORPAY_TICKET_GENERAL_LINK", "description": "Entry to Pahadi Night", "includes": ["Entry to Pahadi Night", "Cultural performances", "Himachali cuisine dinner"]},
     {"tier": "Patron Table", "price": 2000, "link": "RAZORPAY_TICKET_PATRON_LINK", "description": "Reserved table for 10 guests", "includes": ["Reserved table for 10", "Recognition on stage", "Brochure acknowledgment", "Premium seating"]},

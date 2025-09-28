@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Star, Users, Crown, Building2, QrCode, X, Copy, Smartphone } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
-import QRCode from 'qrcode';
+import { createTicketPayment } from '@/lib/razorpay';
 
 const ticketIcons = [Users, Star, Crown, Building2];
 const ticketColors = ['text-[#6DE1FF]', 'text-[#00E0C6]', 'text-[#FF9A1F]', 'text-[#B31E2B]'];
@@ -48,58 +48,18 @@ export default function TicketsSection() {
     }
   };
 
-  const handleBuyTicket = (ticket: any) => {
+  const handleBuyTicket = async (ticket: any) => {
     console.log('Ticket purchase clicked!');
     const quantity = quantities[ticket.tier] || 1;
     const totalAmount = ticket.price * quantity;
     
     console.log('Ticket:', ticket.tier, 'Quantity:', quantity, 'Total:', totalAmount);
     
-    const upiId = 'getepay.hpscbank228371@icici';
-    const name = 'Himachal Relief Fund';
-    const note = `Pahadi Night Ticket - ${ticket.tier} x${quantity} - Amount: ₹${totalAmount}`;
-    
-    // PhonePe deep link format
-    const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${totalAmount}&tn=${encodeURIComponent(note)}`;
-    
-    // Fallback to generic UPI link
-    const genericUpiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${totalAmount}&tn=${encodeURIComponent(note)}`;
-    
-    console.log('Ticket PhonePe URL:', phonePeUrl);
-    
-    // Try opening UPI link
     try {
-      // For desktop, show QR code modal
-      if (!navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) {
-        const ticketInfo = `${ticket.tier} x${quantity}`;
-        setModalData({
-          amount: totalAmount,
-          ticketType: ticketInfo,
-          quantity: quantity
-        });
-        generateTicketQRCode(totalAmount, ticketInfo);
-        setShowQRModal(true);
-        return;
-      }
-      
-      // For mobile, try UPI deep link
-      window.location.href = genericUpiUrl;
-      
-      // Fallback to PhonePe specifically after delay
-      setTimeout(() => {
-        window.location.href = phonePeUrl;
-      }, 1000);
-      
+      await createTicketPayment(totalAmount, ticket.tier, quantity);
     } catch (error) {
-      console.error('Ticket UPI link error:', error);
-      const ticketInfo = `${ticket.tier} x${quantity}`;
-      setModalData({
-        amount: totalAmount,
-        ticketType: ticketInfo,
-        quantity: quantity
-      });
-      generateTicketQRCode(totalAmount, ticketInfo);
-      setShowQRModal(true);
+      console.error('Payment error:', error);
+      alert('Payment failed. Please try again.');
     }
   };
 
