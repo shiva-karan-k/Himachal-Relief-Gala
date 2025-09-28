@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Star, Users, Crown, Building2, QrCode, X, Copy, Smartphone, Ticket } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
 import { createTicketPayment } from '@/lib/razorpay';
+import QRCode from 'qrcode';
 
 const ticketIcons = [Users, Star, Crown, Building2];
 const ticketColors = ['text-[#6DE1FF]', 'text-[#00E0C6]', 'text-[#FF9A1F]', 'text-[#B31E2B]'];

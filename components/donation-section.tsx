@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Heart, Shield, ArrowRight, Smartphone, QrCode, X, Copy } from 'lucide-react';
 import { siteConfig } from '@/app/config/site';
 import { createDonationPayment } from '@/lib/razorpay';
+import QRCode from 'qrcode';
 
 export default function DonationSection() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
