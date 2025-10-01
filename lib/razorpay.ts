@@ -82,46 +82,109 @@ export const openRazorpayPayment = async (options: RazorpayOptions) => {
 };
 
 // Helper function to create donation payment
-export const createDonationPayment = (amount: number, donorName?: string) => {
-  // Use the full Razorpay integration with live key
-  return openRazorpayPayment({
-    amount,
-    currency: 'INR',
-    name: 'Samarthya Foundation',
-    description: `Donation for Himachal Relief - ₹${amount}`,
-    prefill: {
-      name: donorName || '',
-      email: '',
-      contact: '',
-    },
-    notes: {
-      purpose: 'Himachal Relief Fund',
-      event: 'Yuvathon 2025',
-      foundation: 'Samarthya Foundation',
-      '80g_eligible': 'true'
+export const createDonationPayment = async (amount: number, donorName?: string) => {
+  try {
+    // Create order first
+    const orderResponse = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amount: amount * 100, // Convert to paise
+        currency: 'INR',
+        receipt: `donation_${Date.now()}`,
+        notes: {
+          purpose: 'Himachal Relief Fund',
+          event: 'Yuvathon 2025',
+          foundation: 'Samarthya Foundation',
+          '80g_eligible': 'true'
+        }
+      }),
+    });
+
+    if (!orderResponse.ok) {
+      throw new Error('Failed to create order');
     }
-  });
+
+    const order = await orderResponse.json();
+
+    // Use the order ID for payment
+    return openRazorpayPayment({
+      amount,
+      currency: 'INR',
+      name: 'Samarthya Foundation',
+      description: `Donation for Himachal Relief - ₹${amount}`,
+      order_id: order.id,
+      prefill: {
+        name: donorName || '',
+        email: '',
+        contact: '',
+      },
+      notes: {
+        purpose: 'Himachal Relief Fund',
+        event: 'Yuvathon 2025',
+        foundation: 'Samarthya Foundation',
+        '80g_eligible': 'true'
+      }
+    });
+  } catch (error) {
+    console.error('Error creating donation payment:', error);
+    throw error;
+  }
 };
 
 // Helper function to create ticket payment
-export const createTicketPayment = (amount: number, ticketType: string, quantity: number) => {
-  // Use the full Razorpay integration for tickets
-  return openRazorpayPayment({
-    amount,
-    currency: 'INR',
-    name: 'Samarthya Foundation',
-    description: `Pahadi Night Ticket - ${ticketType} x${quantity} - ₹${amount}`,
-    prefill: {
-      name: '',
-      email: '',
-      contact: '',
-    },
-    notes: {
-      purpose: 'Pahadi Night Ticket',
-      ticket_type: ticketType,
-      quantity: quantity.toString(),
-      event: 'Yuvathon 2025',
-      foundation: 'Samarthya Foundation'
+export const createTicketPayment = async (amount: number, ticketType: string, quantity: number) => {
+  try {
+    // Create order first
+    const orderResponse = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amount: amount * 100, // Convert to paise
+        currency: 'INR',
+        receipt: `ticket_${Date.now()}`,
+        notes: {
+          purpose: 'Pahadi Night Ticket',
+          ticket_type: ticketType,
+          quantity: quantity.toString(),
+          event: 'Yuvathon 2025',
+          foundation: 'Samarthya Foundation'
+        }
+      }),
+    });
+
+    if (!orderResponse.ok) {
+      throw new Error('Failed to create order');
     }
-  });
+
+    const order = await orderResponse.json();
+
+    // Use the order ID for payment
+    return openRazorpayPayment({
+      amount,
+      currency: 'INR',
+      name: 'Samarthya Foundation',
+      description: `Pahadi Night Ticket - ${ticketType} x${quantity} - ₹${amount}`,
+      order_id: order.id,
+      prefill: {
+        name: '',
+        email: '',
+        contact: '',
+      },
+      notes: {
+        purpose: 'Pahadi Night Ticket',
+        ticket_type: ticketType,
+        quantity: quantity.toString(),
+        event: 'Yuvathon 2025',
+        foundation: 'Samarthya Foundation'
+      }
+    });
+  } catch (error) {
+    console.error('Error creating ticket payment:', error);
+    throw error;
+  }
 };

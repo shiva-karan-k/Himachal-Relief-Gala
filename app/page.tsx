@@ -8,6 +8,7 @@ import BloodDonationSection from '@/components/blood-donation-section';
 import EventSchedule from '@/components/event-schedule';
 import PartnersVenue from '@/components/partners-venue';
 import Footer from '@/components/footer';
+import VisitorCounter from '@/components/visitor-counter';
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <EventSchedule />
       <PartnersVenue />
       <Footer />
+      <VisitorCounter />
     </main>
   );
 }
