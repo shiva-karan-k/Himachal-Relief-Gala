@@ -84,7 +84,9 @@ export const openRazorpayPayment = async (options: RazorpayOptions) => {
 // Helper function to create donation payment
 export const createDonationPayment = async (amount: number, donorName?: string) => {
   try {
-    // Create order first
+    // Try to create order first
+    console.log('Creating order for amount:', amount);
+    
     const orderResponse = await fetch('/api/create-order', {
       method: 'POST',
       headers: {
@@ -104,10 +106,32 @@ export const createDonationPayment = async (amount: number, donorName?: string) 
     });
 
     if (!orderResponse.ok) {
-      throw new Error('Failed to create order');
+      const errorText = await orderResponse.text();
+      console.error('Order creation failed:', errorText);
+      
+      // Fallback to direct payment without order
+      console.log('Falling back to direct payment...');
+      return openRazorpayPayment({
+        amount,
+        currency: 'INR',
+        name: 'Samarthya Foundation',
+        description: `Donation for Himachal Relief - ₹${amount}`,
+        prefill: {
+          name: donorName || '',
+          email: '',
+          contact: '',
+        },
+        notes: {
+          purpose: 'Himachal Relief Fund',
+          event: 'Yuvathon 2025',
+          foundation: 'Samarthya Foundation',
+          '80g_eligible': 'true'
+        }
+      });
     }
 
     const order = await orderResponse.json();
+    console.log('Order created successfully:', order);
 
     // Use the order ID for payment
     return openRazorpayPayment({
@@ -130,14 +154,35 @@ export const createDonationPayment = async (amount: number, donorName?: string) 
     });
   } catch (error) {
     console.error('Error creating donation payment:', error);
-    throw error;
+    
+    // Fallback to direct payment
+    console.log('Using fallback direct payment...');
+    return openRazorpayPayment({
+      amount,
+      currency: 'INR',
+      name: 'Samarthya Foundation',
+      description: `Donation for Himachal Relief - ₹${amount}`,
+      prefill: {
+        name: donorName || '',
+        email: '',
+        contact: '',
+      },
+      notes: {
+        purpose: 'Himachal Relief Fund',
+        event: 'Yuvathon 2025',
+        foundation: 'Samarthya Foundation',
+        '80g_eligible': 'true'
+      }
+    });
   }
 };
 
 // Helper function to create ticket payment
 export const createTicketPayment = async (amount: number, ticketType: string, quantity: number) => {
   try {
-    // Create order first
+    // Try to create order first
+    console.log('Creating ticket order for amount:', amount);
+    
     const orderResponse = await fetch('/api/create-order', {
       method: 'POST',
       headers: {
@@ -158,10 +203,33 @@ export const createTicketPayment = async (amount: number, ticketType: string, qu
     });
 
     if (!orderResponse.ok) {
-      throw new Error('Failed to create order');
+      const errorText = await orderResponse.text();
+      console.error('Ticket order creation failed:', errorText);
+      
+      // Fallback to direct payment without order
+      console.log('Falling back to direct ticket payment...');
+      return openRazorpayPayment({
+        amount,
+        currency: 'INR',
+        name: 'Samarthya Foundation',
+        description: `Pahadi Night Ticket - ${ticketType} x${quantity} - ₹${amount}`,
+        prefill: {
+          name: '',
+          email: '',
+          contact: '',
+        },
+        notes: {
+          purpose: 'Pahadi Night Ticket',
+          ticket_type: ticketType,
+          quantity: quantity.toString(),
+          event: 'Yuvathon 2025',
+          foundation: 'Samarthya Foundation'
+        }
+      });
     }
 
     const order = await orderResponse.json();
+    console.log('Ticket order created successfully:', order);
 
     // Use the order ID for payment
     return openRazorpayPayment({
@@ -185,6 +253,26 @@ export const createTicketPayment = async (amount: number, ticketType: string, qu
     });
   } catch (error) {
     console.error('Error creating ticket payment:', error);
-    throw error;
+    
+    // Fallback to direct payment
+    console.log('Using fallback direct ticket payment...');
+    return openRazorpayPayment({
+      amount,
+      currency: 'INR',
+      name: 'Samarthya Foundation',
+      description: `Pahadi Night Ticket - ${ticketType} x${quantity} - ₹${amount}`,
+      prefill: {
+        name: '',
+        email: '',
+        contact: '',
+      },
+      notes: {
+        purpose: 'Pahadi Night Ticket',
+        ticket_type: ticketType,
+        quantity: quantity.toString(),
+        event: 'Yuvathon 2025',
+        foundation: 'Samarthya Foundation'
+      }
+    });
   }
 };
